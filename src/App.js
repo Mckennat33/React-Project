@@ -6,12 +6,15 @@ import './App.css';
 
 function App() {
 
-useEffect(() => {
-  fetch() 
-  .then()
-  .then()
-  
-}, [])
+//   const weatherAPI = "http://api.weatherstack.com/current?access_key=ea480034a53a0fca6f27d7a599482ae8&query=`${location}`"
+// useEffect(() => {
+//   fetch(weatherAPI)
+//   .then(resp => resp.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log("err"))
+// }, [])
+
+
 
 
   return (
