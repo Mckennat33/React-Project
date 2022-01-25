@@ -6,15 +6,17 @@ import './App.css';
 
 function App() {
 
-//   const weatherAPI = "http://api.weatherstack.com/current?access_key=ea480034a53a0fca6f27d7a599482ae8&query=`${location}`"
-// useEffect(() => {
-//   fetch(weatherAPI)
-//   .then(resp => resp.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log("err"))
-// }, [])
+  const weatherAPI = "http://api.weatherstack.com/current?access_key=ea480034a53a0fca6f27d7a599482ae8&query=`${location}`"
+useEffect(() => {
+  fetch(weatherAPI)
+  .then(resp => resp.json())
+  .then(data => testFunction(data))
+  .catch(err => console.log("err"))
+}, [])
 
-
+function testFunction(data) {
+  console.log(data.current.weather_icons)
+}
 
 
   return (
