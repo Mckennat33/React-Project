@@ -7,6 +7,7 @@ function WeatherDisplay() {
     return (
         <div>
             <h5>Display</h5>
+            
         </div>
     )
 }
