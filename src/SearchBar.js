@@ -1,22 +1,27 @@
 import React from "react"
 import WeatherDisplay from "./WeatherDisplay";
 import { useState } from "react"
+import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
-function SearchBar({ search }) {
-    const [ searched, setSearched ] = useState("")
+function SearchBar({ onSearchChange }) {
+    
 
-    function searchCity() {
-        console.log("Searching...")
+    function searchCity(event) {
+        console.log(event)
     } 
 
 
 
     return (
         <div>
-            <form className="search-form" onChange={searchCity}>
+            <form 
+            className="search-form">
             <label>Search</label>
-            <input text="text" id="search" value={searched} onChange={searchCity} />
-            
+                <input 
+                text="text" 
+                id="search"
+                onChange={e => searchCity(e.target.value)}
+                />
             <WeatherDisplay />
             </form>
 
