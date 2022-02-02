@@ -4,13 +4,6 @@ import { useState } from "react"
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
 function SearchBar({ onSearchChange }) {
-    
-
-    function searchCity(event) {
-        console.log(event)
-    } 
-
-
 
     return (
         <div>
@@ -20,7 +13,7 @@ function SearchBar({ onSearchChange }) {
                 <input 
                 text="text" 
                 id="search"
-                onChange={e => searchCity(e.target.value)}
+                onChange={e => onSearchChange(e.target.value)}
                 />
             <WeatherDisplay />
             </form>

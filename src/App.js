@@ -9,7 +9,7 @@ function App() {
 //   const weatherAPI = "http://api.weatherstack.com/current?access_key=ea480034a53a0fca6f27d7a599482ae8&query=`${location}`"
 
 // const goodWeatherAPI = "https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=35.5&lon=-78.5"
-
+const [ searchedCity, setSearchedCity ] = useState("Detroit")
 
 useEffect(() => {
   fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${searchedCity}&days=3`, {
@@ -26,12 +26,10 @@ useEffect(() => {
   });
 }, [])
 
-const [ searchedCity, setSearchedCity ] = useState("Detroit")
 
-console.log(searchedCity)
 
-function handleSearchChange(city) {
-  
+  function handleSearchChange(city) {
+    console.log(city)
 }
 
 return (
