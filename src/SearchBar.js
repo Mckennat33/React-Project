@@ -4,21 +4,15 @@ import { useState, useEffect } from "react"
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
 function SearchBar() {
-
-// first goal
-// Get the api/weather information on onto the page. 
-// we want the weather to display for a random city. Then we want the weather to display for the city that is searched.
-// What I am thinking is that we useEffect then so it fetched the data. Then when we search a new city it updated that fetch request with 
-// the city that is subbed 
-
-// look up useEffect and its second arguments. 
-
-
-    const [ searchedCity, setSearchedCity ] = useState("Detroit")
+    const [ searchedCity, setSearchedCity ] = useState([])
     const [ weather, setWeather ] = useState('')
+    const [ isLoaded, setIsLoaded ] = useState(false)
+    const [ exampleState, setExampleState ] = useState([])
+
+// ${searchedCity}
 
     useEffect(() => {
-        fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${searchedCity}&days=3`, {
+        fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=DETROIT&days=3`, {
             "method": "GET",
             "headers": {
             "x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
@@ -26,18 +20,23 @@ function SearchBar() {
         }
         })
         .then(res => res.json())
-        .then(data => setSearchedCity(data))
+        .then(data => 
+            setSearchedCity(data),
+            setIsLoaded(true)  
+        )
         .catch(err => {
-        console.error(err);
-    });
+            console.log(err)
+        })
     }, [])
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        console.log(event)
+    
+    function handleSubmit(ev) {
+        ev.preventDefault()
+        console.log(searchedCity.current.condition.icon)
     }
-
-
+    
+    if (!isLoaded) return <h3>Loading...</h3>;
+    
     return (
         <div>
             <form 
@@ -48,9 +47,15 @@ function SearchBar() {
                 <input 
                 text="text" 
                 id="search"
-                onChange={e => setSearchedCity(e.target.value)}
+                // onChange={e => setSearchedCity(e.target.value)}
                 />
                 <button>Submit</button>
+            {/* {searchedCity.map((city) => {
+                console.log(city.location)
+                // getting an error that .map is not a function - because the data we are fetching is not an array 
+                // Have to figure out a way to convert it to an array or make another type of change to this. sd
+            })} */}
+
             <WeatherDisplay />
             </form>
         </div>
