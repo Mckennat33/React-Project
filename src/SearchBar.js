@@ -32,6 +32,8 @@ useEffect(() => {
     //     console.log(err) 
     // })
 }, [])    
+
+This is not what we wanted to do in the mean time 
     
 let defaultDisplay = Object.values(defaultWeather)
 // console.log(defaultWeather)
