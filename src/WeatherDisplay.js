@@ -7,7 +7,9 @@ import Item from "./Item"
 // location 
 
 function WeatherDisplay({ defaultDisplay }) {
-console.log(defaultDisplay)
+console.log(defaultDisplay.current)
+let test = defaultDisplay.current 
+console.log(test)
     return ( 
         <div>
             <h3>Display</h3>
@@ -15,7 +17,6 @@ console.log(defaultDisplay)
                     return (
                     <ul key={index} >
                         <li key={index} >{weather.name}</li>
-                        <li></li>
                     </ul>
                         )
                 })}
