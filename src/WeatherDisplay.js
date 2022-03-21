@@ -6,22 +6,26 @@ import Item from "./Item"
 // forecast 
 // location 
 
-function WeatherDisplay({ defaultDisplay }) {
-console.log(defaultDisplay)
+
+
+function WeatherDisplay({ defaultDisplay, current }) {
+    // console.log(defaultDisplay)
     return ( 
         <div>
             <h3>Display</h3>
-                {defaultDisplay.map((weather, index) => {
-                    return (
+                {/* {defaultDisplay.map((weather, index) => (
                     <ul key={index} >
-                        <li key={index} >{weather.name}</li>
-                        <li></li>
-                    </ul>
-                        )
-                })}
+                            <li>{defaultDisplay[0].city}</li>
+                            <li>{defaultDisplay[1].astronomy.sunrise}</li>
+                            <li>{console.log(weather.city)}</li>
+                        </ul>
+                ))}  */}
+                {/* <p>{console.log(defaultDisplay[1].astronomy.sunrise)}</p> */}
+                <Item />
         </div>
     )
 }
 
 
 export default WeatherDisplay; 
+
