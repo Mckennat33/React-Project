@@ -41,12 +41,13 @@ function SearchBar() {
         function handleSubmit(ev) {
             ev.preventDefault()
         }    
-        
+
         console.log(defaultWeather)
         
         if (!isLoaded) return  <h3>Loading...</h3>;
         
         
+
         return (
             <div>
             <form 
@@ -64,7 +65,7 @@ function SearchBar() {
                     {defaultWeather.map((weather, index) => {
                         return (
                             <ul key={index}>
-                                <li>{"Hello"}</li>
+                                <li>{"Hello", "Hi"}</li>
                             </ul>
                         )
                     })}
