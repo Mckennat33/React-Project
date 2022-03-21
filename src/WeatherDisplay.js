@@ -8,24 +8,24 @@ import Item from "./Item"
 
 
 
+
 function WeatherDisplay({ defaultDisplay, current }) {
     // console.log(defaultDisplay)
+
+function WeatherDisplay({ defaultDisplay }) {
+console.log(defaultDisplay.current)
+let test = defaultDisplay.current 
+console.log(test)
     return ( 
         <div>
             <h3>Display</h3>
-                {/* {defaultDisplay.map((weather, index) => (
-                    <ul key={index} >
-                            <li>{defaultDisplay[0].city}</li>
-                            <li>{defaultDisplay[1].astronomy.sunrise}</li>
-                            <li>{console.log(weather.city)}</li>
-                        </ul>
-                ))}  */}
-                {/* <p>{console.log(defaultDisplay[1].astronomy.sunrise)}</p> */}
-                <Item />
+
+
         </div>
     )
 }
 
+}
 
 export default WeatherDisplay; 
 

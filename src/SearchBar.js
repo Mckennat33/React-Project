@@ -47,7 +47,6 @@ function SearchBar() {
         if (!isLoaded) return  <h3>Loading...</h3>;
         
         
-
         return (
             <div>
             <form 
