@@ -9,21 +9,13 @@ import Item from "./Item"
 
 
 
-function WeatherDisplay({ defaultDisplay, current }) {
+function WeatherDisplay({ defaultWeather }) {
     // console.log(defaultDisplay)
-
-function WeatherDisplay({ defaultDisplay }) {
-console.log(defaultDisplay.current)
-let test = defaultDisplay.current 
-console.log(test)
-    return ( 
-        <div>
-            <h3>Display</h3>
-
-
-        </div>
-    )
-}
+return (
+    <div>
+        {console.log(defaultWeather)}
+    </div>
+)
 
 }
 
