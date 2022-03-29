@@ -14,7 +14,7 @@ function WeatherDisplay({ defaultWeather }) {
 return (
     <div>
         {console.log(defaultWeather)}
-    </div>
+    </div> 
 )
 
 }

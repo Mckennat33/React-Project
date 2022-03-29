@@ -7,7 +7,7 @@ import Item from "./Item"
 function SearchBar() {
     const [ defaultWeather, setDefaultWeather ] = useState([])
     const [ searchedCity, setSearchedCity ] = useState('London') 
-    const [ isLoaded, setIsLoaded ] = useState(false) 
+    // const [ isLoaded, setIsLoaded ] = useState(false) 
     const [ input, setInput ] = useState('')
 
 
@@ -25,7 +25,7 @@ function SearchBar() {
             .then((data) => {
                 console.log(data)
                 setDefaultWeather(data)
-                setIsLoaded(true)
+                // setIsLoaded(true)
             })
             .catch(err => console.error(err));
 
@@ -44,7 +44,6 @@ function SearchBar() {
         }    
 
 
-
         
         return (
             <div>
@@ -54,11 +53,12 @@ function SearchBar() {
             >
                 <label>Search</label>
                     <input 
-                    text="text" 
+                    type="text" 
                     id="search"
                     onChange={e => setInput(e.target.value)}
                     />
                 <div className="display">
+                {defaultWeather ? <p>{defaultWeather.current.name}</p> : null }
                 </div>
             </form>
         </div>
