@@ -3,6 +3,7 @@ import WeatherDisplay from "./WeatherDisplay";
 import { useState, useEffect } from "react"
 import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import Item from "./Item"
+import 'bootstrap/dist/css/bootstrap.css';
 
 function SearchBar() {
     const [ defaultWeather, setDefaultWeather ] = useState([])
@@ -23,7 +24,7 @@ function SearchBar() {
         fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${searchedCity}&days=3`, options)
             .then(response => response.json())
             .then((data) => {
-                console.log(data)
+                // console.log(data)
                 setDefaultWeather(data)
                 // setIsLoaded(true)
             })
@@ -43,11 +44,13 @@ function SearchBar() {
             
         }    
 
+        const weather = Object.entries(defaultWeather).map((weather) => weather);
+        // console.log(weather);
 
         
-        return (
+      return (
             <div>
-            <form 
+                            <form 
             className="search-form"
             onSubmit={handleSubmit}
             >
@@ -58,39 +61,52 @@ function SearchBar() {
                     onChange={e => setInput(e.target.value)}
                     />
                 <div className="display">
-                {defaultWeather ? <p>{defaultWeather.current.name}</p> : null }
+                {/* {defaultWeather ? <p>{defaultWeather?.location?.name}</p> : null } */}
+                
+                {weather
+                    ? weather.map((getWeather, index) => (
+                        <div key={index}>
+                            <div className="top-location">
+                                <p>{console.log(getWeather[1])}</p>
+                                <p>{getWeather[1].name}</p>
+                                <p>{getWeather[1].country}</p>
+                            </div>
+
+                            <div className="left-condition">
+                                <p>{getWeather[1].condition?.icon}</p>
+                                {/* <p>{console.log(getWeather[1].condition?.icon)}</p> */}
+                            </div>
+                            
+                            <div className="middle-temp">
+                                <p>{getWeather[1].feelslike_f}</p>
+                                {/* need to come back to this to put the Fahrenheit to the display */}
+                            </div>
+                            <div className="right-info">
+                                <p>{getWeather[1].precip_in}</p>
+                                {/* add a percentage to precip */}
+                                <p>{getWeather[1].humidity}</p>
+                                {/* add percentage in humidity */}
+                                <p>{getWeather[1].gust_mph}</p>
+                                {/* need to add mph */}
+                            </div>
+                            <div className="bottom-three-day-forecast">
+                                {/* Date icon temp */}
+                                {/* <p>{getWeather[1].forecastday?.astro?.moonrise}</p> */}
+                            </div>
+                
+                        </div>
+                        ))
+                : 
+                    null
+                }
+                
                 </div>
             </form>
         </div>
 
     )    
 
-
-
 }
 
 
 export default SearchBar;
-
-
-
-
-// const searchWeather = () => {
-//     fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${searchedCity}&days=3`, {
-        
-//         "method": "GET",
-//         "headers": {
-//             "x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
-//             "x-rapidapi-key": "de51889a1fmshe095099b1a97993p13134fjsnc818ad7373cb"
-//         }
-//     }) 
-//     .then((res) => res.json())
-//     .then((data) => {
-//         setDefaultWeather(data)
-//         setIsLoaded(true)
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-        
-// } 
