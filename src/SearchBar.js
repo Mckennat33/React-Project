@@ -33,24 +33,20 @@ function SearchBar() {
     }
 
     useEffect(() => {
-        searchWeather()        
+        searchWeather()         
     }, [searchedCity])
-        
-    
         
         function handleSubmit(e) {
             e.preventDefault()
             setSearchedCity(input)
-            
         }    
 
-        const weather = Object.entries(defaultWeather).map((weather) => weather);
-        // console.log(weather);
-
+        const weather = Object.entries(defaultWeather).map((weather) => weather)
+        // .map((weather) => weather);
         
-      return (
+    return (
             <div>
-                            <form 
+            <form 
             className="search-form"
             onSubmit={handleSubmit}
             >
@@ -62,14 +58,12 @@ function SearchBar() {
                     />
                 <div className="display">
                 {/* {defaultWeather ? <p>{defaultWeather?.location?.name}</p> : null } */}
-                
-                {weather
-                    ? weather.map((getWeather, index) => (
+                    {weather ?
+                    weather.map((getWeather, index) => (
                         <div key={index}>
                             <div className="top-location">
-                                <p>{console.log(getWeather[1])}</p>
                                 <p>{getWeather[1].name}</p>
-                                <p>{getWeather[1].country}</p>
+                                <p>{getWeather[1].region}</p>
                             </div>
 
                             <div className="left-condition">
